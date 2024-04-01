@@ -1,5 +1,6 @@
 package turing.modnametooltip.mixin;
 
+import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.player.inventory.ContainerPlayerCreative;
 import org.spongepowered.asm.mixin.Mixin;
@@ -32,8 +33,10 @@ public abstract class ContainerPlayerCreativeMixin {
 			ModnameTooltip.LOGGER.info(search);
 			for (int i = 0; i < creativeItemsCount; ++i) {
 				ItemStack stack = creativeItems.get(i);
-				String modName = ModnameTooltip.getModnameForItem(stack);
-				if (modName.toLowerCase().contains(modSearch) && (search.isEmpty() || stack.getItem().getTranslatedName(stack).toLowerCase().contains(search))) {
+				ModContainer mod = ModnameTooltip.getModForItem(stack);
+				String modName = mod != null ? mod.getMetadata().getName() : "Minecraft";
+				String modId = mod != null ? mod.getMetadata().getId() : "minecraft";
+				if ((modName.toLowerCase().contains(modSearch) || modId.toLowerCase().contains(modSearch)) && (search.isEmpty() || stack.getItem().getTranslatedName(stack).toLowerCase().contains(search))) {
 					this.searchedItems.add(stack);
 				}
 			}
