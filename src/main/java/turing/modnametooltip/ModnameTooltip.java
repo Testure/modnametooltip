@@ -15,7 +15,7 @@ public class ModnameTooltip implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info("ExampleMod initialized.");
+        LOGGER.info("ModnameTooltip initialized.");
     }
 
 	@Nullable
