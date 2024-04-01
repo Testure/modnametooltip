@@ -18,7 +18,10 @@
   "entrypoints": {
     "main": [
 			"turing.modnametooltip.ModnameTooltip"
-    ]
+    ],
+		"beforeGameStart": [
+			"turing.modnametooltip.ModnameTooltip"
+		]
 	},
   "mixins": [
     "modnametooltip.mixins.json"
@@ -26,7 +29,8 @@
 
   "depends": {
 		"minecraft": "~7.1-beta.2",
-    "fabricloader": ">=0.15.5"
+    "fabricloader": ">=0.15.5",
+		"halplibe": ">=3.4.16"
   },
   "suggests": {
   }
