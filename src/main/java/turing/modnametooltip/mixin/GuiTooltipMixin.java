@@ -17,9 +17,9 @@ public class GuiTooltipMixin {
 	@Inject(method = "getTooltipText(Lnet/minecraft/core/item/ItemStack;ZLnet/minecraft/core/player/inventory/slot/Slot;)Ljava/lang/String;", at = @At(value = "TAIL", shift = At.Shift.BEFORE), locals = LocalCapture.CAPTURE_FAILHARD)
 	public void injectTooltip(ItemStack itemStack, boolean showDescription, Slot slot, CallbackInfoReturnable<String> cir, I18n trans, StringBuilder text) {
 		boolean discovered = slot == null || slot.discovered;
-		if (discovered) {
-			String modName = ModnameTooltip.getModnameForItem(itemStack);
-			modName = TextFormatting.formatted(modName, TextFormatting.BLUE, TextFormatting.ITALIC);
+		if (discovered || ModnameTooltip.ignoreDiscovered) {
+			String modName = ModnameTooltip.useID ? ModnameTooltip.getModIdForItem(itemStack) : ModnameTooltip.getModnameForItem(itemStack);
+			modName = TextFormatting.formatted(modName, ModnameTooltip.FORMATS);
 			if (text.indexOf(modName) == -1) {
 				if (!text.substring(text.length() - 1, text.length()).equals("\n")) text.append("\n");
 				text.append(modName);
