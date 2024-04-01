@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "modnametooltip",
+  "version": "${version}",
+
+  "name": "Modname Tooltip",
+  "description": "This mod aims to help new BTA modders.",
+  "authors": [
+    "Turing6"
+  ],
+  "contact": {
+  },
+
+	"icon": "icon.png",
+  "license": "GPL-3.0",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+			"turing.modnametooltip.ModnameTooltip"
+    ]
+	},
+  "mixins": [
+    "modnametooltip.mixins.json"
+  ],
+
+  "depends": {
+		"minecraft": "~7.1-beta.2",
+    "fabricloader": ">=0.15.5"
+  },
+  "suggests": {
+  }
+}
