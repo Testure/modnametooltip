@@ -4,11 +4,13 @@
   "version": "${version}",
 
   "name": "Mod Name Tooltip",
-  "description": "This mod aims to help new BTA modders.",
+  "description": "Adds the mod name of items to their tooltip.",
   "authors": [
     "Turing6"
   ],
   "contact": {
+		"sources": "https://github.com/Testure/modnametooltip",
+		"issues": "https://github.com/Testure/modnametooltip/issues"
   },
 
 	"icon": "icon.png",
