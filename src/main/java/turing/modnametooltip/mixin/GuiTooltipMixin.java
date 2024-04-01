@@ -14,9 +14,8 @@ import turing.modnametooltip.ModnameTooltip;
 
 @Mixin(value = GuiTooltip.class, remap = false)
 public class GuiTooltipMixin {
-	@Inject(method = "getTooltipText(Lnet/minecraft/core/item/ItemStack;ZLnet/minecraft/core/player/inventory/slot/Slot;)Ljava/lang/String;", at = @At("RETURN"), locals = LocalCapture.CAPTURE_FAILHARD, cancellable = true)
+	@Inject(method = "getTooltipText(Lnet/minecraft/core/item/ItemStack;ZLnet/minecraft/core/player/inventory/slot/Slot;)Ljava/lang/String;", at = @At(value = "TAIL", shift = At.Shift.BEFORE), locals = LocalCapture.CAPTURE_FAILHARD)
 	public void injectTooltip(ItemStack itemStack, boolean showDescription, Slot slot, CallbackInfoReturnable<String> cir, I18n trans, StringBuilder text) {
-		ModnameTooltip.LOGGER.info("what");
 		boolean discovered = slot == null || slot.discovered;
 		if (discovered) {
 			String modName = ModnameTooltip.getModnameForItem(itemStack);
@@ -24,7 +23,6 @@ public class GuiTooltipMixin {
 			if (text.indexOf(modName) == -1) {
 				if (!text.substring(text.length() - 1, text.length()).equals("\n")) text.append("\n");
 				text.append(modName);
-				cir.setReturnValue(text.toString());
 			}
 		}
 	}

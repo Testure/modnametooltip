@@ -1,7 +1,5 @@
 package turing.modnametooltip.mixin;
 
-import com.llamalad7.mixinextras.sugar.Local;
-import com.llamalad7.mixinextras.sugar.ref.LocalRef;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.player.inventory.ContainerPlayerCreative;
 import org.spongepowered.asm.mixin.Mixin;
@@ -25,11 +23,8 @@ public abstract class ContainerPlayerCreativeMixin {
 	protected List<ItemStack> searchedItems;
 
 	@Inject(method = "searchPage", at = @At(value = "INVOKE", target = "Lnet/minecraft/core/lang/I18n;getInstance()Lnet/minecraft/core/lang/I18n;", shift = At.Shift.AFTER))
-	public void injectModnameSearch(String search, CallbackInfo ci, @Local(argsOnly = true) LocalRef<String> localRef) {
+	public void injectModnameSearch(String search, CallbackInfo ci) {
 		if (!search.isEmpty() && search.charAt(0) == '@' && !search.substring(1).isEmpty()) {
-			if (search.contains(" ")) {
-				localRef.set(search.substring(search.indexOf(' ')).substring(1));
-			}
 			for (int i = 0; i < creativeItemsCount; ++i) {
 				ItemStack stack = creativeItems.get(i);
 				String modName = ModnameTooltip.getModnameForItem(stack);
