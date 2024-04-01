@@ -3,7 +3,7 @@
   "id": "modnametooltip",
   "version": "${version}",
 
-  "name": "Modname Tooltip",
+  "name": "Mod Name Tooltip",
   "description": "This mod aims to help new BTA modders.",
   "authors": [
     "Turing6"
