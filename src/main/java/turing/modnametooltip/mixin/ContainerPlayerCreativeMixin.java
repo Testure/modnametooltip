@@ -24,11 +24,16 @@ public abstract class ContainerPlayerCreativeMixin {
 
 	@Inject(method = "searchPage", at = @At(value = "INVOKE", target = "Lnet/minecraft/core/lang/I18n;getInstance()Lnet/minecraft/core/lang/I18n;", shift = At.Shift.AFTER))
 	public void injectModnameSearch(String search, CallbackInfo ci) {
-		if (!search.isEmpty() && search.charAt(0) == '@' && !search.substring(1).isEmpty()) {
+		if (search.contains("@") && !search.substring(search.indexOf('@') + 1).isEmpty()) {
+			String modSearch = search.substring(search.indexOf('@') + 1).toLowerCase();
+			if (modSearch.contains(" ")) modSearch = modSearch.substring(0, modSearch.indexOf(' '));
+			search = search.replace(" @" + modSearch, "").replace("@" + modSearch, "");
+			if (!search.isEmpty() && search.charAt(0) == ' ') search = search.substring(1);
+			ModnameTooltip.LOGGER.info(search);
 			for (int i = 0; i < creativeItemsCount; ++i) {
 				ItemStack stack = creativeItems.get(i);
 				String modName = ModnameTooltip.getModnameForItem(stack);
-				if (modName.toLowerCase().contains(search.substring(1).toLowerCase())) {
+				if (modName.toLowerCase().contains(modSearch) && (search.isEmpty() || stack.getItem().getTranslatedName(stack).toLowerCase().contains(search))) {
 					this.searchedItems.add(stack);
 				}
 			}
