@@ -30,7 +30,6 @@ public abstract class ContainerPlayerCreativeMixin {
 			if (modSearch.contains(" ")) modSearch = modSearch.substring(0, modSearch.indexOf(' '));
 			search = search.replace(" @" + modSearch, "").replace("@" + modSearch, "");
 			if (!search.isEmpty() && search.charAt(0) == ' ') search = search.substring(1);
-			ModnameTooltip.LOGGER.info(search);
 			for (int i = 0; i < creativeItemsCount; ++i) {
 				ItemStack stack = creativeItems.get(i);
 				ModContainer mod = ModnameTooltip.getModForItem(stack);
