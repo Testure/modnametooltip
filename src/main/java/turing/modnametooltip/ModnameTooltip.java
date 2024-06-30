@@ -66,7 +66,7 @@ public class ModnameTooltip implements ModInitializer, GameStartEntrypoint {
 
 	@Nullable
 	public static ModContainer getModForItem(ItemStack stack) {
-		String name = stack.getItemName();
+		String name = stack.getItemKey();
 		if (name.length() < 5) return null;
 		name = name.substring(5);
 		if (name.contains(".")) name = name.substring(0, name.indexOf('.'));
