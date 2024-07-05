@@ -66,6 +66,10 @@ public class ModnameTooltip implements ModInitializer, GameStartEntrypoint {
 
 	@Nullable
 	public static ModContainer getModForItem(ItemStack stack) {
+		if (stack == null || stack.getItemKey() == null) {
+			LOGGER.error("Attempted to get the mod for an invalid ItemStack. Defaulting to Minecraft.");
+			return null;
+		}
 		String name = stack.getItemKey();
 		if (name.length() < 5) return null;
 		name = name.substring(5);
