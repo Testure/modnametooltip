@@ -30,7 +30,7 @@ public class ModnameTooltip implements ModInitializer, GameStartEntrypoint {
 	public static boolean ignoreDiscovered;
 
 	static {
-		properties.addEntry("Formatting", "A list of text formatting to be applied to the mod name tooltip.\nThere are 21 formats in total with ids 16 to 20 being text styles and all others being colors.\nThe default of 11,20 represents text that is blue and italic.", "[11,20]");
+		properties.addEntry("Formatting", "A list of text formatting to be applied to the mod name tooltip.\nThere are 21 formats in total with ids 16 to 20 being text styles and all others being colors.\nThe default of 11 represents text that is blue.", "[11]");
 		properties.addEntry("UseModID", "If true, the tooltip will display the mod id instead of the mod name.", false);
 		properties.addEntry("IgnoreDiscovery", "If true, the tooltip will display even if the item hasn't been discovered yet.\nThis mainly applies to items in the guide book.", false);
 
