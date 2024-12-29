@@ -1,7 +1,7 @@
 package turing.modnametooltip.mixin;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiTooltip;
+import net.minecraft.client.gui.TooltipElement;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.lang.I18n;
 import net.minecraft.core.net.command.TextFormatting;
@@ -14,8 +14,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import turing.modnametooltip.ModnameTooltip;
 
-@Mixin(value = GuiTooltip.class, remap = false)
-public class GuiTooltipMixin {
+@Mixin(value = TooltipElement.class, remap = false)
+public class TooltipElementMixin {
 	@Shadow
 	Minecraft mc;
 

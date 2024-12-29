@@ -7,7 +7,6 @@ import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.net.command.TextFormatting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import turniplabs.halplibe.util.ConfigUpdater;
 import turniplabs.halplibe.util.GameStartEntrypoint;
 import turniplabs.halplibe.util.TomlConfigHandler;
 import turniplabs.halplibe.util.toml.Toml;
@@ -21,7 +20,6 @@ import java.util.Map;
 public class ModnameTooltip implements ModInitializer, GameStartEntrypoint {
     public static final String MOD_ID = "modnametooltip";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-	private static final ConfigUpdater updater = ConfigUpdater.fromProperties();
 	private static final TomlConfigHandler cfg;
 	private static final Toml properties = new Toml("Mod Name Tooltip Config");
 	private static final Map<String, ModContainer> MOD_ID_MAP = new HashMap<>();
@@ -34,7 +32,7 @@ public class ModnameTooltip implements ModInitializer, GameStartEntrypoint {
 		properties.addEntry("UseModID", "If true, the tooltip will display the mod id instead of the mod name.", false);
 		properties.addEntry("IgnoreDiscovery", "If true, the tooltip will display even if the item hasn't been discovered yet.\nThis mainly applies to items in the guide book.", false);
 
-		cfg = new TomlConfigHandler(updater, MOD_ID, properties);
+		cfg = new TomlConfigHandler(MOD_ID, properties);
 	}
 
     @Override

@@ -4,10 +4,10 @@
     "package": "turing.modnametooltip.mixin",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
-      "ContainerPlayerCreativeMixin"
+      "MenuInventoryCreativeMixin"
     ],
     "client": [
-      "GuiTooltipMixin"
+      "TooltipElementMixin"
     ],
     "injectors": {
         "defaultRequire": 1
