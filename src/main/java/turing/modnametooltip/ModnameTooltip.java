@@ -5,13 +5,13 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.core.item.ItemStack;
 import net.minecraft.core.net.command.TextFormatting;
+import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import turniplabs.halplibe.util.GameStartEntrypoint;
 import turniplabs.halplibe.util.TomlConfigHandler;
 import turniplabs.halplibe.util.toml.Toml;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
