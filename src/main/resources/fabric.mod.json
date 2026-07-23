@@ -20,10 +20,7 @@
   "entrypoints": {
     "main": [
 			"turing.modnametooltip.ModnameTooltip"
-    ],
-		"beforeGameStart": [
-			"turing.modnametooltip.ModnameTooltip"
-		]
+    ]
 	},
   "mixins": [
     "modnametooltip.mixins.json"

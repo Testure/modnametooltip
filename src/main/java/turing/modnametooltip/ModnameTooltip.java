@@ -8,8 +8,9 @@ import net.minecraft.core.net.command.TextFormatting;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import turniplabs.halplibe.util.GameStartEntrypoint;
+import turniplabs.halplibe.event.defs.CommonEvents;
 import turniplabs.halplibe.util.TomlConfigHandler;
+import turniplabs.halplibe.util.dependency.Key;
 import turniplabs.halplibe.util.toml.Toml;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ModnameTooltip implements ModInitializer, GameStartEntrypoint {
+public class ModnameTooltip implements ModInitializer {
     public static final String MOD_ID = "modnametooltip";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	private static final TomlConfigHandler cfg;
@@ -37,10 +38,10 @@ public class ModnameTooltip implements ModInitializer, GameStartEntrypoint {
 
     @Override
     public void onInitialize() {
+		CommonEvents.BEFORE_GAME_START.listen(Key.of(MOD_ID), this::beforeGameStart);
         LOGGER.info("ModnameTooltip initialized.");
     }
 
-	@Override
 	public void beforeGameStart() {
 		for (ModContainer mod : FabricLoader.getInstance().getAllMods()) {
 			MOD_ID_MAP.put(mod.getMetadata().getId(), mod);
@@ -58,9 +59,6 @@ public class ModnameTooltip implements ModInitializer, GameStartEntrypoint {
         }
 		FORMATS = list.toArray(new TextFormatting[0]);
 	}
-
-	@Override
-	public void afterGameStart() {}
 
 	@Nullable
 	public static ModContainer getModForItem(ItemStack stack) {
