@@ -27,7 +27,7 @@
   ],
 
   "depends": {
-		"minecraft": ">=8.0",
+		"minecraft": "*",
 		"fabricloader": ">=0.18.4-bta.11",
 		"halplibe": ">=6.1.1+8.0-pre3"
   },
