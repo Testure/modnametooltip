@@ -1,6 +1,6 @@
 package turing.modnametooltip;
 
-import net.fabricmc.api.ModInitializer;
+import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.core.item.ItemStack;
@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ModnameTooltip implements ModInitializer {
+public class ModnameTooltip implements ClientModInitializer {
     public static final String MOD_ID = "modnametooltip";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	private static final TomlConfigHandler cfg;
@@ -37,7 +37,7 @@ public class ModnameTooltip implements ModInitializer {
 	}
 
     @Override
-    public void onInitialize() {
+    public void onInitializeClient() {
 		CommonEvents.BEFORE_GAME_START.listen(Key.of(MOD_ID), this::beforeGameStart);
         LOGGER.info("ModnameTooltip initialized.");
     }
