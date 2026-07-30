@@ -51,20 +51,20 @@ public class ModnameTooltip implements ClientModInitializer {
 		ignoreDiscovered = cfg.getBoolean("IgnoreDiscovery");
 		String listString = cfg.getString("Formatting").replace(" ", "").replace("[", "").replace("]", "");
 		String[] split = listString.split(",");
-		List<TextFormatting> list = new ArrayList<>();
+		List<TextFormatting> list = new ArrayList<>(split.length);
         for (String s : split) {
             int id = Integer.parseInt(s);
             if (id < TextFormatting.FORMATTINGS.length) {
                 list.add(TextFormatting.get(id));
             }
         }
-		FORMATS = list.toArray(new TextFormatting[0]);
+		FORMATS = list.toArray(TextFormatting[]::new);
 	}
 
 	@Nullable
 	public static ModContainer getModForItem(ItemStack stack) {
 		if (stack == null || stack.getItemKey() == null) {
-			LOGGER.error("Attempted to get the mod for an invalid ItemStack. Defaulting to Minecraft.");
+			//LOGGER.error("Attempted to get the mod for an invalid ItemStack. Defaulting to Minecraft.");
 			return null;
 		}
 		String name = stack.getItemKey();

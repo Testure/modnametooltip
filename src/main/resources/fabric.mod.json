@@ -2,7 +2,6 @@
   "schemaVersion": 1,
   "id": "modnametooltip",
   "version": "${version}",
-
   "name": "Mod Name Tooltip",
   "description": "Adds the mod name of items to their tooltip.",
   "authors": [
@@ -12,10 +11,8 @@
 		"sources": "https://github.com/Testure/modnametooltip",
 		"issues": "https://github.com/Testure/modnametooltip/issues"
   },
-
 	"icon": "icon.png",
   "license": "GPL-3.0",
-
   "environment": "client",
   "entrypoints": {
     "client": [
@@ -25,12 +22,9 @@
   "mixins": [
     "modnametooltip.mixins.json"
   ],
-
   "depends": {
 		"minecraft": "*",
 		"fabricloader": ">=0.18.4-bta.11",
 		"halplibe": ">=6.1.1+8.0-pre3"
-  },
-  "suggests": {
   }
 }
