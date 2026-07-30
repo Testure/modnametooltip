@@ -17,7 +17,10 @@
   "entrypoints": {
     "client": [
 			"turing.modnametooltip.ModnameTooltip"
-    ]
+    ],
+		"modmenu": [
+			"turing.modnametooltip.plugin.ModMenuPlugin"
+		]
 	},
   "mixins": [
     "modnametooltip.mixins.json"
